@@ -189,7 +189,7 @@ export function DocsSidebar() {
 			>
 				<div className="flex items-center gap-2.5 px-4 py-3.5 border-b border-foreground/5 bg-background select-none">
 					<Link href="/docs/getting-started/introduction" className="flex items-center gap-2.5 group">
-						<div className="flex h-5 w-5 items-center justify-center rounded bg-foreground text-background font-mono text-[11px] font-black tracking-tighter">
+						<div className="flex h-5 w-5 items-center justify-center rounded bg-[#cc785c] text-white font-mono text-[11px] font-black tracking-tighter">
 							Q
 						</div>
 						<span className="font-mono text-sm font-bold tracking-wider text-foreground group-hover:opacity-80 transition-opacity">

@@ -1,8 +1,117 @@
 /* spell-checker:disable */
 @import "tailwindcss";
 @import "fumadocs-ui/css/generated/glass.css";
-@import "fumadocs-ui/css/black.css";
 @import "fumadocs-ui/css/preset.css";
+
+@theme {
+	--color-fd-background: #faf9f5;
+	--color-fd-foreground: #141413;
+	--color-fd-muted: #f5f0e8;
+	--color-fd-muted-foreground: #6c6a64;
+	--color-fd-popover: #ffffff;
+	--color-fd-popover-foreground: #141413;
+	--color-fd-card: #efe9de;
+	--color-fd-card-foreground: #141413;
+	--color-fd-border: #e6dfd8;
+	--color-fd-primary: #cc785c;
+	--color-fd-primary-foreground: #ffffff;
+	--color-fd-secondary: #f5f0e8;
+	--color-fd-secondary-foreground: #252523;
+	--color-fd-accent: #e8e0d2;
+	--color-fd-accent-foreground: #141413;
+	--color-fd-ring: #cc785c;
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-ring: var(--ring);
+
+	--color-coral: #cc785c;
+	--color-coral-hover: #a9583e;
+	--color-espresso: #181715;
+	--color-espresso-elevated: #252320;
+	--color-espresso-soft: #1f1e1b;
+	--color-cream: #faf9f5;
+	--color-cream-soft: #f5f0e8;
+	--color-cream-card: #efe9de;
+	--color-hairline: #e6dfd8;
+	--color-hairline-dark: #2c2925;
+
+	--font-serif: "Copernicus", "Tiempos Headline", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Georgia", serif;
+}
+
+:root {
+	--background: #faf9f5;
+	--foreground: #141413;
+	--muted: #f5f0e8;
+	--muted-foreground: #6c6a64;
+	--popover: #ffffff;
+	--popover-foreground: #141413;
+	--card: #efe9de;
+	--card-foreground: #141413;
+	--border: #e6dfd8;
+	--input: #e6dfd8;
+	--primary: #cc785c;
+	--primary-foreground: #ffffff;
+	--secondary: #f5f0e8;
+	--secondary-foreground: #252523;
+	--accent: #e8e0d2;
+	--accent-foreground: #141413;
+	--ring: #cc785c;
+	--radius: 0.375rem;
+
+	--font-serif: "Copernicus", "Tiempos Headline", "Iowan Old Style", "Apple Garamond", "Baskerville", "Times New Roman", "Georgia", serif;
+}
+
+.dark {
+	--color-fd-background: #181715;
+	--color-fd-foreground: #faf9f5;
+	--color-fd-muted: #252320;
+	--color-fd-muted-foreground: #a09d96;
+	--color-fd-popover: #1f1e1b;
+	--color-fd-popover-foreground: #faf9f5;
+	--color-fd-card: #1f1e1b;
+	--color-fd-card-foreground: #faf9f5;
+	--color-fd-border: #2c2925;
+	--color-fd-primary: #cc785c;
+	--color-fd-primary-foreground: #ffffff;
+	--color-fd-secondary: #252320;
+	--color-fd-secondary-foreground: #faf9f5;
+	--color-fd-accent: #2c2925;
+	--color-fd-accent-foreground: #faf9f5;
+	--color-fd-ring: #cc785c;
+
+	--background: #181715;
+	--foreground: #faf9f5;
+	--muted: #252320;
+	--muted-foreground: #a09d96;
+	--popover: #1f1e1b;
+	--popover-foreground: #faf9f5;
+	--card: #1f1e1b;
+	--card-foreground: #faf9f5;
+	--border: #2c2925;
+	--input: #2c2925;
+	--primary: #cc785c;
+	--primary-foreground: #ffffff;
+	--secondary: #252320;
+	--secondary-foreground: #faf9f5;
+	--accent: #2c2925;
+	--accent-foreground: #faf9f5;
+	--ring: #cc785c;
+}
 @source "../components/**/*.{ts,tsx}";
 @source "../node_modules/fumadocs-ui/dist/**/*.js";
 
@@ -866,26 +975,26 @@ input[type="search"]::-webkit-search-results-decoration {
 	display: hidden;
 }
 
-/* Code blocks — flat near-black, sharp edges, no gradients */
+/* Code blocks — warm dark espresso, sharp edges */
 .dark .shiki {
-	background-color: #050505 !important;
-	border-color: rgba(255, 255, 255, 0.06);
-	border-radius: 0 !important;
+	background-color: #131210 !important;
+	border-color: #2c2925 !important;
+	border-radius: 4px !important;
 }
 
 /* Tab/card wrappers containing code blocks */
 .dark .bg-fd-card:has(.shiki),
 .dark [data-slot="tabs"]:has(.shiki),
 .dark div:has(> [role="tablist"]):has(.shiki) {
-	background-color: #050505 !important;
-	border-color: rgba(255, 255, 255, 0.06);
-	border-radius: 0 !important;
+	background-color: #131210 !important;
+	border-color: #2c2925 !important;
+	border-radius: 4px !important;
 }
 
 /* Override when keepBackground is enabled */
 .dark .bg-\(--shiki-dark-bg\),
 .dark [class*="bg-(--shiki-dark-bg)"] {
-	background-color: #050505 !important;
+	background-color: #131210 !important;
 }
 
 /* Code block title bar / tab list — flat, no gradient */
@@ -893,45 +1002,83 @@ input[type="search"]::-webkit-search-results-decoration {
 .dark [role="tablist"]:has(+ [role="tabpanel"] .shiki),
 .dark [role="tablist"]:has(+ div .shiki) {
 	background: transparent;
-	border-color: rgba(255, 255, 255, 0.06);
+	border-color: #2c2925 !important;
 	border-radius: 0 !important;
 }
 
 /* Tab content panel background */
 .dark [role="tabpanel"]:has(.shiki) {
-	background-color: #050505 !important;
-	border-radius: 0 !important;
+	background-color: #131210 !important;
+	border-radius: 0 0 4px 4px !important;
 }
 
 /* Code block inside tabs — match parent, no extra border/shadow */
 .dark [role="tabpanel"] .shiki {
-	background-color: #050505 !important;
+	background-color: #131210 !important;
 	border: none;
 	box-shadow: none;
-	border-radius: 0 !important;
+	border-radius: 0 0 4px 4px !important;
 }
 
-/* Code block content viewport — force near-black in dark mode */
+/* Code block content viewport — warm espresso in dark mode */
 .dark .fd-scroll-container,
 .dark figure.shiki .fd-scroll-container,
 .dark figure:has(.shiki) > div:last-child {
-	background-color: #050505 !important;
+	background-color: #131210 !important;
 }
 
 /* Code block figure bg-fd-secondary / bg-fd-card wrappers */
 .dark figure.shiki,
 .dark figure:has(pre) {
-	background-color: #050505 !important;
-	border-color: rgba(255, 255, 255, 0.06);
+	background-color: #131210 !important;
+	border-color: #2c2925 !important;
 }
 
-/* All code block figures — sharp corners (both themes) */
+/* All code block figures (both themes) */
 figure:has(.shiki),
 figure.shiki,
 [data-slot="tabs"]:has(.shiki),
 .bg-fd-card:has(.shiki) {
-	border-radius: 0 !important;
+	border-radius: 6px !important;
 	overflow: hidden;
+	border: 1px solid rgba(230, 223, 216, 0.4);
+}
+
+.dark figure:has(.shiki),
+.dark figure.shiki,
+.dark [data-slot="tabs"]:has(.shiki),
+.dark .bg-fd-card:has(.shiki) {
+	border-color: #2c2925 !important;
+}
+
+/* Editorial serif typography for headlines */
+.docs-layout h1,
+.docs-layout h2,
+.docs-layout h3,
+.docs-layout [data-slot="docs-title"],
+.prose h1,
+.prose h2,
+.prose h3 {
+	font-family: var(--font-serif);
+	letter-spacing: -0.015em;
+	font-weight: 500;
+}
+
+/* Warm selection styling */
+::selection {
+	background-color: rgba(204, 120, 92, 0.25);
+	color: inherit;
+}
+
+/* Claude editorial link styling */
+.prose a:not([class*="not-prose"]) {
+	text-decoration-color: rgba(204, 120, 92, 0.4);
+	text-underline-offset: 3px;
+	transition: text-decoration-color 150ms ease, color 150ms ease;
+}
+.prose a:not([class*="not-prose"]):hover {
+	color: #cc785c;
+	text-decoration-color: #cc785c;
 }
 
 figure.shiki > div:first-child,

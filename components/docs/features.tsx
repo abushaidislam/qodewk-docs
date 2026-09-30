@@ -13,13 +13,13 @@ export function Features({ features }: { features?: FeatureItem[] }) {
 				{items.map((feature, i) => (
 					<div
 						key={feature.title}
-						className="relative bg-gradient-to-b min-h-[180px] dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white px-6 py-6 overflow-hidden flex flex-col justify-start border border-neutral-200/60 dark:border-neutral-800/80 rounded-sm"
+						className="relative bg-gradient-to-b min-h-[180px] dark:from-[#1f1e1b] from-[#fbf8f2] dark:to-[#181715] to-[#f4ede2] px-6 py-6 overflow-hidden flex flex-col justify-start border border-[#e6dfd8] dark:border-[#2c2925] rounded-lg shadow-xs hover:border-[#cc785c]/50 transition-all duration-200 group"
 					>
 						<Grid size={i * 5 + 10} pattern={patterns[i % patterns.length]} />
-						<p className="text-base font-bold text-neutral-800 dark:text-white relative z-0 mb-2 leading-snug">
+						<p className="text-base font-bold text-[#141413] dark:text-[#faf9f5] relative z-0 mb-2 leading-snug group-hover:text-[#cc785c] transition-colors">
 							{feature.title}
 						</p>
-						<p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base font-normal relative z-0 leading-relaxed">
+						<p className="text-[#6c6a64] dark:text-[#a09d96] text-sm md:text-base font-normal relative z-0 leading-relaxed">
 							{feature.description}
 						</p>
 					</div>
@@ -151,22 +151,22 @@ export const Grid = ({
 	size?: number;
 }) => {
 	const p = pattern ?? [
-		[Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-		[Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-		[Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-		[Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
-		[Math.floor(Math.random() * 4) + 7, Math.floor(Math.random() * 6) + 1],
+		[7, 1],
+		[8, 3],
+		[9, 2],
+		[10, 4],
+		[8, 5],
 	];
 	return (
-		<div className="pointer-events-none absolute left-1/2 top-0  -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]">
-			<div className="absolute inset-0 bg-gradient-to-r  [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-zinc-900/30 from-zinc-100/30 to-zinc-300/30 dark:to-zinc-900/30 opacity-100">
+		<div className="pointer-events-none absolute left-1/2 top-0 -ml-20 -mt-2 h-full w-full [mask-image:linear-gradient(white,transparent)]">
+			<div className="absolute inset-0 bg-gradient-to-r [mask-image:radial-gradient(farthest-side_at_top,white,transparent)] dark:from-[#cc785c]/10 from-[#cc785c]/10 to-transparent opacity-100">
 				<GridPattern
 					width={size ?? 20}
 					height={size ?? 20}
 					x="-12"
 					y="4"
 					squares={p}
-					className="absolute inset-0 h-full w-full  mix-blend-overlay dark:fill-white/10 dark:stroke-white/10 stroke-black/10 fill-black/10"
+					className="absolute inset-0 h-full w-full mix-blend-overlay dark:fill-[#cc785c]/25 dark:stroke-[#cc785c]/30 stroke-[#cc785c]/20 fill-[#cc785c]/15"
 				/>
 			</div>
 		</div>
