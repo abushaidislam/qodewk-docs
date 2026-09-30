@@ -21,18 +21,18 @@ export function loadDocsVersions(): ResolvedDocsVersion[] {
 			JSON.parse(readFileSync(metadataPath, "utf8")),
 		);
 	} catch (cause) {
-		throw new Error(
+		const error = new Error(
 			`Unable to read ${metadataPath}. Run sync-versions first.`,
-			{
-				cause,
-			},
 		);
+		(error as { cause?: unknown }).cause = cause;
+		throw error;
 	}
 	return docsVersions.map((version) => {
 		const releaseVersion = releaseVersions[version.id];
 		if (
 			releaseVersion === undefined ||
-			!releaseVersion.startsWith(`${version.releaseLine}.`)
+			(releaseVersion !== version.releaseLine &&
+				!releaseVersion.startsWith(`${version.releaseLine}.`))
 		) {
 			throw new Error(`Invalid release version for ${version.id}`);
 		}
