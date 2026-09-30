@@ -1,6 +1,7 @@
 /* spell-checker:disable */
 @import "tailwindcss";
 @import "fumadocs-ui/css/generated/glass.css";
+@import "fumadocs-ui/css/black.css";
 @import "fumadocs-ui/css/preset.css";
 
 @theme {
