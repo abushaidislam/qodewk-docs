@@ -10,11 +10,10 @@ import type { PageTreesByVersion } from "./provider";
 import { DocsProvider } from "./provider";
 import { DocsShell } from "./shell";
 
-const [latestVersion, version16] = docsVersions;
+const [latestVersion] = docsVersions;
 
 const pageTreesByVersion = {
 	latest: getSourceFor(latestVersion.id).getPageTree(),
-	"1.6": getSourceFor(version16.id).getPageTree(),
 } satisfies PageTreesByVersion;
 
 function getAvailablePaths(version: DocsVersion) {
@@ -26,7 +25,6 @@ function getAvailablePaths(version: DocsVersion) {
 
 const versionAvailability = {
 	latest: getAvailablePaths(latestVersion),
-	"1.6": getAvailablePaths(version16),
 } satisfies VersionAvailability;
 const resolvedDocsVersions = loadDocsVersions();
 export default function Layout({ children }: { children: ReactNode }) {
