@@ -1,0 +1,19 @@
+---
+title: Cursor IDE
+description: Deep dive into how Qodewk harvests telemetry from Cursor IDE workspace databases.
+icon: cursor
+---
+
+# Cursor IDE Harvester
+
+The **Cursor Harvester** extracts telemetry from Cursor editor workspace storage and SQLite databases.
+
+---
+
+## 📂 Discovered Footprints
+
+Qodewk scans the following platform-specific locations:
+
+- **Windows:** `%APPDATA%\Cursor\User\workspaceStorage\<workspace-hash>\state.vscdb`
+- **macOS:** `~/Library/Application Support/Cursor/User/workspaceStorage/<workspace-hash>/state.vscdb`
+- **Linux:** `~/.config/Cursor/User/workspaceStorage/<workspace-hash>/state.vscdb`

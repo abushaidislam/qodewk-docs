@@ -1,0 +1,47 @@
+---
+title: Overview
+description: How Qodewk scans local developer environments and extracts footprint telemetry from AI coding agents.
+icon: conceptsAPI
+---
+
+# Multi-Platform Harvester Architecture
+
+Unlike single-vendor CLI tools that only inspect a single proprietary log format, **Qodewk is built on a modular Harvester Pipeline Architecture**.
+
+```text
+┌─────────────────────────────────────────────────────────────┐
+│                       LOCAL WORKSPACE                       │
+├─────────────────┬─────────────────┬─────────────────────────┤
+│   Antigravity   │   Claude Code   │       Cursor IDE        │
+│   (SQLite/JSONL)│   (JSONL Logs)  │      (state.vscdb)      │
+└────────┬────────┴────────┬────────┴────────────┬────────────┘
+         │                 │                     │
+         ▼                 ▼                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│                 QODEWK HARVESTER ENGINE                     │
+│  - Path resolver & footprint discovery                      │
+│  - Multi-turn token accumulator                             │
+│  - Tool mutation mapping (write_to_file, Edit, replace)     │
+│  - Git revision & timestamp correlation                     │
+└──────────────────────────────┬──────────────────────────────┘
+                               │
+                               ▼
+┌─────────────────────────────────────────────────────────────┐
+│                   RECEIPT PROTOCOL V1.0                     │
+│  - Verified Telemetry & Provenance (95% Confidence)         │
+│  - AI vs. Human Contribution Metrics                        │
+│  - Frontier Model Pricing & Cost Attribution                │
+└─────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔍 How Harvesters Work
+
+When you run `npx qodewk`, the engine performs the following multi-step pipeline:
+
+1. **Discovery:** Scans standard system paths across Windows, macOS, and Linux for active agent sessions belonging to the current Git repository or workspace directory.
+2. **Footprint Extraction:** Reads session databases, JSON lines, and metadata without modifying or altering local state.
+3. **Git Correlation:** Inspects the Git commit history and working tree diff to associate agent tool executions (`write_to_file`, `replace_file_content`, `Edit`, `Write`) with specific line changes.
+4. **Token Accumulation:** Sums input tokens, cached/read tokens, output tokens, and tool call counts across all multi-turn conversation rounds.
+5. **Cost Calculation:** Maps harvested model IDs against `@qodewk/pricing` rate cards to calculate exact dollar amounts.

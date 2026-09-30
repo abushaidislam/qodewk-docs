@@ -1,0 +1,15 @@
+---
+title: Local SQLite State
+description: How Qodewk persists footprints locally without external database servers.
+icon: conceptsDatabase
+---
+
+# Local SQLite Storage
+
+Qodewk uses Node.js's built-in `node:sqlite` engine (or a standalone zero-native fallback) to manage local state:
+
+- Path: `~/.qodewk/state.db`
+- Tables:
+  - `receipts` — Local history of all generated receipts.
+  - `footprints` — Cached telemetry parsed from agent transcript files.
+  - `workspaces` — Known local workspace repository mappings.

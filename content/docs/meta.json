@@ -1,0 +1,12 @@
+{
+  "title": "Documentation",
+  "root": true,
+  "pages": [
+    "getting-started",
+    "harvesters",
+    "telemetry-and-cost",
+    "security",
+    "integrations",
+    "architecture"
+  ]
+}

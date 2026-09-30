@@ -1,0 +1,59 @@
+---
+title: Quickstart
+description: Get started with Qodewk in seconds using npx without installing any packages globally.
+icon: basicUsage
+---
+
+# Quickstart (Zero Install)
+
+You can run Qodewk directly inside any Git repository without installing any packages or configuring global environment variables.
+
+---
+
+## 🏃 Run Instantly via NPX
+
+Open your terminal in any active Git repository and execute:
+
+```bash
+# Generate monospace thermal receipt for the current working tree or latest commit
+npx qodewk
+```
+
+Qodewk automatically:
+1. Detects your Git branch, working tree changes, and uncommitted or latest commits.
+2. Discovers local footprint logs from **Google Antigravity**, **Claude Code**, and **Cursor**.
+3. Correlates file mutations to calculate exact token usage, AI attribution percentage, and frontier cost.
+4. Renders a thermal ASCII receipt in your console.
+
+---
+
+## 📅 Daily Standups & Time Filtering
+
+Harvest agent work performed across specific time horizons:
+
+```bash
+# Harvest all agent coding activity from today (ideal for daily standups)
+npx qodewk --today
+
+# Harvest work completed in the last 24 hours
+npx qodewk --since 24h
+
+# Harvest work completed in the last 7 days
+npx qodewk --since 7d
+```
+
+---
+
+## 🌐 Publish & Share Receipts
+
+Generate a privacy-safe shareable URL to share with your team or social media:
+
+```bash
+npx qodewk share
+```
+
+Output:
+```text
+✓ Receipt published successfully!
+🔗 https://qodewk.dev/r/rec_8381ef3792010f9a2cfe
+```

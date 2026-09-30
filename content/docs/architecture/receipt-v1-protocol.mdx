@@ -1,0 +1,50 @@
+---
+title: Receipt Protocol V1.0
+description: Canonical schema specification for Qodewk digital receipts.
+icon: scrollTextIcon
+---
+
+# The Receipt Protocol (Receipt v1.0)
+
+All telemetry produced by Qodewk adheres to the canonical `ReceiptV1` schema defined in `@qodewk/protocol`:
+
+```typescript
+import { z } from "zod";
+
+export const ReceiptV1Schema = z.object({
+  version: z.literal("1.0"),
+  receiptId: z.string().startsWith("rec_"),
+  timestamp: z.string().datetime(),
+  repository: z.object({
+    name: z.string(),
+    branch: z.string(),
+    commitSha: z.string(),
+  }),
+  task: z.object({
+    title: z.string(),
+    summary: z.string().optional(),
+  }),
+  gitDelta: z.object({
+    filesChanged: z.number().int(),
+    insertions: z.number().int(),
+    deletions: z.number().int(),
+    netLines: z.number().int(),
+  }),
+  attribution: z.object({
+    aiPercentage: z.number().min(0).max(100),
+    humanPercentage: z.number().min(0).max(100),
+    provenance: z.enum(["verified", "estimated"]),
+    confidence: z.number().min(0).max(1),
+  }),
+  telemetry: z.object({
+    provider: z.string(),
+    model: z.string(),
+    inputTokens: z.number().int(),
+    cachedInputTokens: z.number().int(),
+    outputTokens: z.number().int(),
+    totalTokens: z.number().int(),
+    verifiedCostUsd: z.number(),
+  }),
+  signature: z.string(), // HMAC-SHA256
+});
+```

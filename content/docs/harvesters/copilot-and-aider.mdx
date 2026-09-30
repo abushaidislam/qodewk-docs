@@ -1,0 +1,32 @@
+---
+title: Copilot & Aider
+description: How Qodewk extracts telemetry from GitHub Copilot Git trailers and Aider chat history.
+icon: github
+---
+
+# GitHub Copilot & Aider Harvesters
+
+In addition to dedicated IDEs and agents, Qodewk supports Git-level and repository-level AI coding tools.
+
+---
+
+## 🤖 GitHub Copilot Harvester
+
+GitHub Copilot does not write local SQLite session logs, but it annotates Git commits with author trailers.
+
+### Captured Footprints
+- Inspects commit messages for:
+  - `Co-authored-by: Copilot <copilot@github.com>`
+  - `Co-authored-by: GitHub Copilot <noreply@github.com>`
+- Uses Git blame and diff hunk attribution to calculate human vs. Copilot contribution ratios.
+- Fallback Mode: Runs in `estimated` provenance mode with AST token approximations.
+
+---
+
+## 💬 Aider Harvester
+
+Aider stores interactive chat and code change history directly inside the repository.
+
+### Captured Footprints
+- Scans `.aider.chat.history.md` and `.aider.input.history` in the repository root.
+- Extracts user prompts, model names, and executed file patch diffs.

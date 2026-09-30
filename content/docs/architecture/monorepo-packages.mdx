@@ -1,0 +1,23 @@
+---
+title: Monorepo Structure
+description: Overview of Qodewk's Turborepo workspace packages.
+icon: fileBoxIcon
+---
+
+# Monorepo Structure
+
+Qodewk is built as a modular TypeScript monorepo managed by **Turborepo** and **pnpm**:
+
+```text
+Qodewk/
+├── apps/
+│   └── web/                   # Next.js 15 Web Application
+├── packages/
+│   ├── protocol/              # Canonical Zod schemas & contracts (Receipt v1.0)
+│   ├── pricing/               # Frontier rate card registry
+│   ├── core/                  # Harvester engine & Git diff analyzer
+│   ├── cli/                   # Self-contained bundled CLI (`qodewk`, `npx qodewk`)
+│   └── action/                # GitHub Action for automated sticky PR receipts
+├── docs/                      # Technical whitepapers
+└── README.md
+```

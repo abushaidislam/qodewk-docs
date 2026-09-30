@@ -1,0 +1,26 @@
+---
+title: Dual-Engine Provenance
+description: How Qodewk verifies AI attribution confidence and computes verified vs estimated scores.
+icon: shieldCheck
+---
+
+# Dual-Engine Provenance
+
+A foundational invariant of Qodewk is **Never Fake Precision**. If exact telemetry data cannot be mathematically verified from local logs, Qodewk clearly flags the receipt with an honest confidence rating.
+
+---
+
+## ⚖️ Provenance Modes
+
+### 1. `verified` Mode (95% Confidence)
+Activated when local agent transcripts directly match the Git commit timestamp and file mutation tool calls.
+
+- **Token Counts:** Exact integers recorded by the LLM API provider.
+- **Cache Ratios:** Exact prompt cache read vs. cache write tokens.
+- **Attribution:** Verified tool execution mapping against Git diff hunks.
+
+### 2. `estimated` Mode (45%–65% Confidence)
+Activated when running in clean CI environments, or when inspecting legacy commits where local agent logs are unavailable.
+
+- **AST Tokenizer:** Contextual token approximation using language-specific AST token densities.
+- **Git Commit Analysis:** Author trailers, commit cadence, and change burst heuristics.

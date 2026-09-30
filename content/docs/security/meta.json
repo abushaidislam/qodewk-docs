@@ -1,0 +1,9 @@
+{
+  "title": "Security & Privacy",
+  "icon": "infrastructure",
+  "pages": [
+    "zero-source-exfiltration",
+    "hmac-verification",
+    "kill-switch"
+  ]
+}

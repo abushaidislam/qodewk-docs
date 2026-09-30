@@ -1,0 +1,43 @@
+---
+title: Installation
+description: How to install and configure Qodewk globally or as a project dependency.
+icon: installation
+---
+
+# Installation
+
+While `npx qodewk` is recommended for zero-install quick runs, you can also install Qodewk globally for fast terminal access, or add its modular packages to your TypeScript / Node.js monorepo.
+
+---
+
+## 💻 Global CLI Installation
+
+Install the Qodewk CLI globally using your favorite package manager:
+
+```bash
+# Using npm
+npm install -g qodewk
+
+# Using pnpm
+pnpm add -g qodewk
+
+# Using bun
+bun add -g qodewk
+```
+
+After global installation, you can run `qodewk` directly from anywhere:
+
+```bash
+qodewk --version
+qodewk
+```
+
+---
+
+## 📦 Modular Packages for Developers
+
+If you are building custom developer tools, agent telemetry dashboards, or enterprise audit pipelines, you can install Qodewk's decoupled core packages:
+
+- `@qodewk/core` — Harvester engine and Git diff correlation.
+- `@qodewk/protocol` — Canonical Zod schemas and TypeScript interfaces for `ReceiptV1`.
+- `@qodewk/pricing` — Frontier model rate card registry with token calculation algorithms.

@@ -1,0 +1,15 @@
+---
+title: Zero Source Exfiltration
+description: How Qodewk guarantees that source code never leaves your local workstation.
+icon: shieldCheck
+---
+
+# Zero Source Exfiltration Invariant
+
+> **INVARIANT 1:** Your source code files, proprietary algorithms, and raw Git diff bodies **NEVER** leave your machine.
+
+When you run `qodewk share` or upload a receipt to Qodewk Cloud:
+
+1. **No Code Upload:** Only anonymized statistical metrics are transmitted (file counts, lines added/removed, token numbers, task summaries, model names).
+2. **Hard 50 KB Request Cap:** The Qodewk Cloud API enforces a strict `50 KB` request body size limit, making it physically impossible to upload codebase contents.
+3. **Cryptographic Signatures:** Every receipt includes an `HMAC-SHA256` signature proving telemetry integrity without exposing underlying code lines.

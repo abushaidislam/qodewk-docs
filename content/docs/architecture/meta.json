@@ -1,0 +1,9 @@
+{
+  "title": "Architecture & Specs",
+  "icon": "concepts",
+  "pages": [
+    "monorepo-packages",
+    "receipt-v1-protocol",
+    "sqlite-storage"
+  ]
+}

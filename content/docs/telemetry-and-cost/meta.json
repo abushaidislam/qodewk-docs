@@ -1,0 +1,9 @@
+{
+  "title": "Telemetry & Cost",
+  "icon": "databases",
+  "pages": [
+    "provenance",
+    "frontier-rate-cards",
+    "cost-formula"
+  ]
+}

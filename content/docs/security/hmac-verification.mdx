@@ -1,0 +1,13 @@
+---
+title: HMAC Verification
+description: Cryptographic integrity and tamper-proof verification for Qodewk receipts.
+icon: key
+---
+
+# HMAC-SHA256 Receipt Verification
+
+To ensure that receipts cannot be forged or tampered with:
+
+1. A deterministic SHA-256 digest is generated over canonical receipt fields (`timestamp`, `commitSha`, `tokens`, `cost`).
+2. The hash is signed with the user's workspace key using HMAC-SHA256.
+3. Anyone viewing the receipt on Qodewk Cloud can mathematically verify that the metrics have not been modified.

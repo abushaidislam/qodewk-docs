@@ -1,0 +1,52 @@
+---
+title: CLI Reference
+description: Complete reference for all Qodewk CLI commands, flags, arguments, and export options.
+icon: conceptsCLI
+---
+
+# CLI Command Reference
+
+`qodewk` is a high-performance command line tool for harvesting AI footprints, auditing Git revisions, and generating receipts.
+
+```bash
+qodewk [command] [options]
+```
+
+---
+
+## 📋 Primary Commands
+
+### 1. Default Run (`qodewk`)
+Harvests agent activity in the current repository and renders an ASCII thermal receipt:
+
+```bash
+npx qodewk
+```
+
+### 2. `qodewk share`
+Publishes the generated receipt to Qodewk Cloud and returns a permanent, shareable URL:
+
+```bash
+npx qodewk share
+```
+
+### 3. `qodewk audit`
+Audits a full Git branch revision range (such as a Pull Request branch against main):
+
+```bash
+npx qodewk audit --base origin/main --head HEAD --format markdown --out pr-receipt.md
+```
+
+---
+
+## 🚩 Options & Flags
+
+| Flag | Type | Default | Description |
+|---|---|---|---|
+| `--today` | `boolean` | `false` | Filters agent footprints to the current calendar day (midnight to now). |
+| `--since <duration>` | `string` | — | Time boundary for telemetry harvesting (e.g. `1h`, `24h`, `7d`, `30d`). |
+| `--platform <platform>` | `string` | `all` | Filter by platform: `antigravity`, `claude`, `cursor`, `aider`, `copilot`, or `all`. |
+| `--json` | `boolean` | `false` | Outputs raw, machine-readable JSON matching the `ReceiptV1` protocol schema. |
+| `-f, --format <format>` | `string` | `thermal` | Receipt format: `thermal` (monospace ASCII), `markdown`, or `json`. |
+| `-o, --out <file>` | `string` | `stdout` | Write receipt output to a file instead of standard output. |
+| `--anon` | `boolean` | `false` | Anonymize sensitive repository names and branch names in receipt output. |

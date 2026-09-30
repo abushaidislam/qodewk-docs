@@ -1,0 +1,21 @@
+---
+title: Cost Formula
+description: Mathematical formulation for computing verified AI development costs.
+icon: gauge
+---
+
+# Cost Calculation Formula
+
+Qodewk computes frontier AI development cost using the exact token breakdown:
+
+```text
+Total Cost = (Input × R_in) + (Cached Input × R_cache) + (Output × R_out)
+```
+
+Where:
+- `Input` = Non-cached prompt tokens.
+- `R_in` = Base input rate per token.
+- `Cached Input` = Prompt tokens loaded from KV cache.
+- `R_cache` = Cached read rate per token.
+- `Output` = Model generated completion tokens.
+- `R_out` = Completion output rate per token.

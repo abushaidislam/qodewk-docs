@@ -1,0 +1,19 @@
+---
+title: Kill Switch & Air-Gapped Mode
+description: How to permanently disable all cloud network calls in high-security environments.
+icon: triangleAlertIcon
+---
+
+# Kill Switch & Air-Gapped Mode
+
+If your organization operates in a strict air-gapped or offline development environment:
+
+```bash
+# Permanently disable cloud publishing
+export QODEWK_TELEMETRY=off
+```
+
+When set to `off`:
+- The `share` command is completely disabled.
+- Zero outbound network requests are made.
+- The CLI runs 100% offline using local SQLite storage.

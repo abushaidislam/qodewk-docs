@@ -1,0 +1,22 @@
+---
+title: Google Antigravity
+description: Deep dive into how Qodewk harvests telemetry from Google Antigravity (AGY) sessions.
+icon: google
+---
+
+# Google Antigravity Harvester
+
+The **Antigravity Harvester** extracts telemetry from Google Antigravity (AGY) agent sessions, conversation databases, and multi-agent trajectories.
+
+---
+
+## 📂 Discovered Footprints
+
+Qodewk scans the following local data stores:
+
+- **Conversation Summary Database:**
+  - Path: `~/.gemini/antigravity/conversation_summaries.db`
+  - Purpose: SQLite database containing conversation IDs, project workspace URIs, task summaries, and session timestamps.
+- **Detailed Multi-Turn Transcripts:**
+  - Path: `~/.gemini/antigravity/brain/<conversation-id>/.system_generated/logs/transcript.jsonl`
+  - Purpose: Detailed multi-turn logs capturing model names (e.g. `claude-opus-4-6-thinking`, `gemini-3-8-flash`), exact token usages, and tool calls (`write_to_file`, `replace_file_content`, `run_command`).

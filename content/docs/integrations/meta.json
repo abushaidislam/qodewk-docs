@@ -1,0 +1,9 @@
+{
+  "title": "CI/CD & Integrations",
+  "icon": "integrations",
+  "pages": [
+    "github-actions",
+    "sticky-pr-comments",
+    "cloud-sharing"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "title": "Get Started",
+  "icon": "getStarted",
+  "pages": [
+    "introduction",
+    "quickstart",
+    "installation",
+    "cli-reference"
+  ]
+}

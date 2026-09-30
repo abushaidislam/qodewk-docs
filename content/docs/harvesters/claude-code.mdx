@@ -1,0 +1,26 @@
+---
+title: Claude Code CLI
+description: Deep dive into how Qodewk harvests telemetry from Claude Code CLI sessions.
+icon: claudeCode
+---
+
+# Claude Code CLI Harvester
+
+The **Claude Code Harvester** extracts telemetry from Anthropic's Claude Code command line interface sessions.
+
+---
+
+## 📂 Discovered Footprints
+
+Qodewk scans the following project log directories:
+
+- **Session Logs:**
+  - Path: `~/.claude/projects/<project-slug>/sessions/*.jsonl`
+  - Purpose: Full JSON Lines transcripts of Claude Code terminal sessions.
+
+---
+
+## 🛠️ Captured Telemetry
+
+1. **Token Attribution:** Captures raw input tokens, cache read input tokens, cache creation input tokens, and output tokens.
+2. **File Edits:** Parses `Edit`, `Write`, and `MultiEdit` tool calls to correlate with Git commits.
