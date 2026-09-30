@@ -187,7 +187,7 @@ export function DocsSidebar() {
 				transition={{ duration: 0.28, ease: "easeOut" }}
 				className="fixed left-0 top-0 bottom-0 w-[22vw] max-w-[300px] hidden lg:flex flex-col z-30 bg-background border-r border-foreground/5 transition-[width] duration-300 ease-out"
 			>
-				<div className="flex items-center gap-2.5 px-4 py-3.5 border-b border-foreground/5 bg-background select-none">
+				<div className="flex h-[52px] items-center gap-2.5 px-4 border-b border-foreground/5 bg-background select-none">
 					<Link href="/docs/getting-started/introduction" className="flex items-center gap-2.5 group">
 						<div className="flex h-5 w-5 items-center justify-center rounded bg-[#cc785c] text-white font-mono text-[11px] font-black tracking-tighter">
 							Q

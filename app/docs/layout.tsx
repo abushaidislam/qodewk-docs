@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 import { AIChat, AIChatPanel, AIChatTrigger } from "@/components/ai-chat";
 import { DocsSidebar } from "@/components/docs/docs-sidebar";
+import { DocsHeader } from "@/components/docs/docs-header";
 import type { DocsVersion, VersionAvailability } from "@/lib/docs-versions";
 import { docsVersions, stripVersionPrefix } from "@/lib/docs-versions";
 import { loadDocsVersions } from "@/lib/release-versions";
@@ -38,6 +39,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 				<Suspense>
 					<DocsSidebar />
 				</Suspense>
+				<DocsHeader />
 				<DocsShell>
 					{children}
 					<AIChatPanel />
