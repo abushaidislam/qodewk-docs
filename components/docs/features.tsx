@@ -1,19 +1,25 @@
 import { useId } from "react";
 
-export function Features() {
+interface FeatureItem {
+	title: string;
+	description: string;
+}
+
+export function Features({ features }: { features?: FeatureItem[] }) {
+	const items = features ?? grid;
 	return (
-		<div className="py-2 max-w-[1300px]">
+		<div className="py-2 max-w-[1300px] not-prose">
 			<div className="mt-2 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-10 md:gap-2 max-w-7xl mx-auto">
-				{grid.map((feature, i) => (
+				{items.map((feature, i) => (
 					<div
 						key={feature.title}
-						className="relative bg-gradient-to-b min-h-[180px] dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white px-6 py-2 overflow-hidden"
+						className="relative bg-gradient-to-b min-h-[180px] dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white px-6 py-6 overflow-hidden flex flex-col justify-start border border-neutral-200/60 dark:border-neutral-800/80 rounded-sm"
 					>
-						<Grid size={i * 5 + 10} />
-						<p className="text-base font-bold text-neutral-800 dark:text-white relative z-0">
+						<Grid size={i * 5 + 10} pattern={patterns[i % patterns.length]} />
+						<p className="text-base font-bold text-neutral-800 dark:text-white relative z-0 mb-2 leading-snug">
 							{feature.title}
 						</p>
-						<p className="text-neutral-600 dark:text-neutral-400 text-base font-normal relative z-0">
+						<p className="text-neutral-600 dark:text-neutral-400 text-sm md:text-base font-normal relative z-0 leading-relaxed">
 							{feature.description}
 						</p>
 					</div>
@@ -23,44 +29,118 @@ export function Features() {
 	);
 }
 
-const grid = [
+const grid: FeatureItem[] = [
 	{
-		title: "Framework Agnostic",
-		description: "Support for most popular frameworks",
-	},
-	{
-		title: "Email & Password",
+		title: "Multi-Platform Harvesting",
 		description:
-			"Built-in support for secure email and password authentication",
+			"Direct footprint harvesting for Google Antigravity, Claude Code, Cursor, Copilot, and Aider",
 	},
 	{
-		title: "Account & Session Management",
-		description: "Manage user accounts and sessions with ease",
+		title: "AI vs. Human Attribution",
+		description:
+			"Cross-reference Git diff hunks against agent tool calls to calculate exact code contribution",
 	},
 	{
-		title: "Built-In Rate Limiter",
-		description: "Built-in rate limiter with custom rules",
+		title: "Dual-Engine Provenance",
+		description:
+			"High-confidence verified telemetry from local session transcripts with heuristic AST fallback",
 	},
 	{
-		title: "Automatic Database Management",
-		description: "Automatic database management and migrations",
+		title: "Frontier Cost Estimation",
+		description:
+			"Built-in dynamic rate cards with cache read/write pricing for Claude, Gemini, OpenAI, and DeepSeek",
 	},
 	{
-		title: "Social Sign-on",
-		description: "Multiple social sign-on providers",
+		title: "Thermal Receipt Generator",
+		description:
+			"Verifiable monospace ASCII thermal receipts, shareable web links, and machine-readable JSON",
 	},
 	{
-		title: "Organization & Access Control",
-		description: "Manage organizations and access control",
+		title: "Zero Source Exfiltration",
+		description:
+			"Strict privacy invariant: source code never leaves your machine. Metadata and hashes only",
 	},
 	{
-		title: "Two Factor Authentication",
-		description: "Secure your users with two factor authentication",
+		title: "Automated PR Sticky Receipts",
+		description:
+			"Official GitHub Action to post verifiable proof-of-shipment comment receipts on Pull Requests",
 	},
 	{
-		title: "Plugin Ecosystem",
-		description: "Even more capabilities with plugins",
+		title: "Git-Native Local Store",
+		description:
+			"Embedded zero-native SQLite state persistence with non-blocking background Git hooks",
 	},
+	{
+		title: "Time-Bounded Analytics",
+		description:
+			"Filter and audit shipments across customizable windows like --today, --since 24h, or specific dates",
+	},
+];
+
+const patterns: number[][][] = [
+	[
+		[7, 1],
+		[8, 3],
+		[9, 2],
+		[10, 4],
+		[8, 5],
+	],
+	[
+		[8, 2],
+		[7, 4],
+		[9, 1],
+		[10, 3],
+		[7, 5],
+	],
+	[
+		[9, 3],
+		[8, 1],
+		[7, 4],
+		[10, 2],
+		[9, 5],
+	],
+	[
+		[7, 2],
+		[9, 4],
+		[8, 3],
+		[10, 1],
+		[8, 5],
+	],
+	[
+		[8, 4],
+		[10, 2],
+		[7, 3],
+		[9, 1],
+		[7, 5],
+	],
+	[
+		[10, 3],
+		[7, 1],
+		[8, 4],
+		[9, 2],
+		[10, 5],
+	],
+	[
+		[7, 3],
+		[8, 2],
+		[10, 4],
+		[9, 1],
+		[8, 5],
+	],
+	[
+		[9, 2],
+		[7, 5],
+		[8, 1],
+		[10, 3],
+		[9, 4],
+	],
+	[
+		[8, 1],
+		[10, 4],
+		[7, 2],
+		[9, 3],
+		[7, 4],
+	],
 ];
 
 export const Grid = ({
