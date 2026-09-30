@@ -1,4 +1,4 @@
-1import type { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 import { source } from "@/lib/source";
 
 const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://qodewk.com";
