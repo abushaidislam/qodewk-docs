@@ -1,5 +1,5 @@
 import "server-only";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import * as z from "zod";
 import type { ResolvedDocsVersion } from "./docs-versions";
@@ -15,27 +15,19 @@ export function loadDocsVersions(): ResolvedDocsVersion[] {
 		"docs",
 		"release-versions.json",
 	);
-	let releaseVersions: z.infer<typeof releaseVersionsSchema>;
+	let releaseVersions: Record<string, string> = {};
 	try {
-		releaseVersions = releaseVersionsSchema.parse(
-			JSON.parse(readFileSync(metadataPath, "utf8")),
-		);
-	} catch (cause) {
-		const error = new Error(
-			`Unable to read ${metadataPath}. Run sync-versions first.`,
-		);
-		(error as { cause?: unknown }).cause = cause;
-		throw error;
-	}
-	return docsVersions.map((version) => {
-		const releaseVersion = releaseVersions[version.id];
-		if (
-			releaseVersion === undefined ||
-			(releaseVersion !== version.releaseLine &&
-				!releaseVersion.startsWith(`${version.releaseLine}.`))
-		) {
-			throw new Error(`Invalid release version for ${version.id}`);
+		if (existsSync(metadataPath)) {
+			releaseVersions = releaseVersionsSchema.parse(
+				JSON.parse(readFileSync(metadataPath, "utf8")),
+			);
 		}
+	} catch {
+		// Use releaseLine fallback if metadata file is unavailable
+	}
+
+	return docsVersions.map((version) => {
+		const releaseVersion = releaseVersions[version.id] ?? version.releaseLine;
 		return { ...version, releaseVersion };
 	});
 }

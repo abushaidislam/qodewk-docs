@@ -4,10 +4,12 @@ node_modules
 .env
 .DS_Store
 next-env.d.ts
+*.tsbuildinfo
 
 # Build-time sync targets (populated by scripts/sync-versions.ts)
 content/_generated/**
 !content/_generated/**/
 !content/_generated/**/.gitkeep
+!content/_generated/docs/release-versions.json
 .docs-sync-tmp/
 .vercel
