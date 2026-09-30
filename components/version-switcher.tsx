@@ -85,7 +85,7 @@ export function VersionSwitcher({ className }: { className?: string }) {
 						{currentVersion.id === "latest" ? "Latest Version" : `Version ${currentVersion.id}`}
 					</span>
 					<span className="text-[11px] text-muted-foreground font-mono">
-						{currentVersion.releaseVersion || (currentVersion.id === "latest" ? "0.2.3" : "0.2.0")}
+						{currentVersion.releaseLine}
 					</span>
 				</div>
 				<div className="flex items-center text-muted-foreground/60 group-hover:text-foreground transition-colors">

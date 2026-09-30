@@ -11,6 +11,13 @@ const nextConfig = {
 			"@radix-ui/react-popover",
 			"@radix-ui/react-select",
 			"@radix-ui/react-checkbox",
+			"@radix-ui/react-accordion",
+			"@radix-ui/react-dialog",
+			"@radix-ui/react-dropdown-menu",
+			"@radix-ui/react-tooltip",
+			"@radix-ui/react-collapsible",
+			"@radix-ui/react-separator",
+			"date-fns",
 		],
 	},
 	images: {
@@ -49,16 +56,6 @@ const nextConfig = {
 				source: "/products",
 				has: [{ type: "query", key: "tab", value: "infrastructure" }],
 				destination: "/products/infrastructure",
-				permanent: true,
-			},
-			{
-				source: "/terms",
-				destination: "/legal/terms",
-				permanent: true,
-			},
-			{
-				source: "/privacy",
-				destination: "/legal/privacy",
 				permanent: true,
 			},
 			{

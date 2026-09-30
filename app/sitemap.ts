@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
-import { blogs, source } from "@/lib/source";
+import { source } from "@/lib/source";
 
-const BASE_URL = "https://better-auth.com";
+const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://qodewk.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const basePages: MetadataRoute.Sitemap = [
@@ -12,31 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			priority: 1.0,
 		},
 		{
-			url: `${BASE_URL}/blog`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.8,
-		},
-		{
 			url: `${BASE_URL}/changelog`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.8,
-		},
-		{
-			url: `${BASE_URL}/community`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.8,
-		},
-		{
-			url: `${BASE_URL}/enterprise`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.8,
-		},
-		{
-			url: `${BASE_URL}/pricing`,
 			lastModified: new Date(),
 			changeFrequency: "weekly",
 			priority: 0.8,
@@ -45,22 +21,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	const docPages: MetadataRoute.Sitemap = await Promise.all(
 		source.getPages().map(async (page) => {
-			const { lastModified } = await page.data.load();
+			const data = (await page.data.load()) as { lastModified?: string | Date };
 			return {
 				url: `${BASE_URL}${page.url}`,
-				lastModified: lastModified ? new Date(lastModified) : new Date(),
+				lastModified: data.lastModified ? new Date(data.lastModified) : new Date(),
 				changeFrequency: "weekly",
 				priority: 0.7,
 			};
 		}),
 	);
 
-	const blogPages: MetadataRoute.Sitemap = blogs.getPages().map((page) => ({
-		url: `${BASE_URL}${page.url.replace("/blogs/", "/blog/")}`,
-		lastModified: page.data.date ? new Date(page.data.date) : new Date(),
-		changeFrequency: "monthly",
-		priority: 0.6,
-	}));
-
-	return [...basePages, ...docPages, ...blogPages];
+	return [...basePages, ...docPages];
 }

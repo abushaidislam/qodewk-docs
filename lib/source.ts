@@ -1,7 +1,6 @@
 import { loader } from "fumadocs-core/source";
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
-import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
-import { blogCollection, docs, docsV16 } from "@/.source/server";
+import { docs, docsV16 } from "@/.source/server";
 import type { DocsVersionId } from "./docs-versions";
 import { pageTreePlugin } from "./page-tree";
 
@@ -29,8 +28,3 @@ const docsSources = {
 export function getSourceFor(versionId: DocsVersionId) {
 	return docsSources[versionId];
 }
-
-export const blogs = loader({
-	baseUrl: "/blog",
-	source: toFumadocsSource(blogCollection, []),
-});
