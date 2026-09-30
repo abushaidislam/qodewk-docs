@@ -24,12 +24,6 @@ export const docsVersions = [
 		id: "latest",
 		badge: null,
 	},
-	{
-		label: "v0.2.0 (Legacy)",
-		releaseLine: "0.2.0",
-		id: "1.6",
-		badge: null,
-	},
 ] as const satisfies readonly DocsVersionConfig[];
 
 export type DocsVersion = (typeof docsVersions)[number];

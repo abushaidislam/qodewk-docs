@@ -13,12 +13,6 @@ export default function Footer() {
 					>
 						Docs
 					</Link>
-					<Link
-						href="/changelog"
-						className="hover:text-foreground transition-colors"
-					>
-						Changelog
-					</Link>
 				</div>
 			</div>
 		</footer>

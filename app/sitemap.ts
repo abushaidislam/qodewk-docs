@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+1import type { MetadataRoute } from "next";
 import { source } from "@/lib/source";
 
 const BASE_URL = process.env.NEXT_PUBLIC_URL || "https://qodewk.com";
@@ -10,12 +10,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			lastModified: new Date(),
 			changeFrequency: "daily",
 			priority: 1.0,
-		},
-		{
-			url: `${BASE_URL}/changelog`,
-			lastModified: new Date(),
-			changeFrequency: "weekly",
-			priority: 0.8,
 		},
 	];
 

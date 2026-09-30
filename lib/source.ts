@@ -1,6 +1,6 @@
 import { loader } from "fumadocs-core/source";
 import { lucideIconsPlugin } from "fumadocs-core/source/lucide-icons";
-import { docs, docsV16 } from "@/.source/server";
+import { docs } from "@/.source/server";
 import type { DocsVersionId } from "./docs-versions";
 import { pageTreePlugin } from "./page-tree";
 
@@ -13,18 +13,10 @@ export const source = loader({
 	plugins: docsPlugins,
 });
 
-export const sourceV16 = loader({
-	baseUrl: "/docs/1.6",
-	source: docsV16.toFumadocsSource(),
-	pageTree: { noRef: true },
-	plugins: docsPlugins,
-});
-
 const docsSources = {
 	latest: source,
-	"1.6": sourceV16,
 } satisfies Record<DocsVersionId, typeof source>;
 
 export function getSourceFor(versionId: DocsVersionId) {
-	return docsSources[versionId];
+	return docsSources[versionId] ?? source;
 }
